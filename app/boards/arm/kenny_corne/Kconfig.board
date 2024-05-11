@@ -1,0 +1,7 @@
+config BOARD_CORNE_LH
+    bool "corne LH"
+    depends on SOC_NRF52840_QIAA
+
+config BOARD_CORNE_RH
+    bool "corne RH"
+    depends on SOC_NRF52840_QIAA

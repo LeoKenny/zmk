@@ -1,0 +1,13 @@
+file_format: "1"
+id: kenny_corne
+name: kenny_corne
+type: board
+arch: arm
+features:
+  - keys
+outputs:
+  - usb
+  - ble
+sibilings:
+  - kenny_corne_lh
+  - kenny_corne_rh
