@@ -13,6 +13,9 @@
 #define NEW_RBKT 0x31
 #define NEW_TILDE APOS
 #define NEW_GRAVE LBKT
+#define BSLH_QST INT1
+#define COLON_SEMI SLASH
+#define CEDILHA SEMI
 
 #define SOUND_DOWN F11
 #define SOUND_UP F12
@@ -23,59 +26,59 @@
         compatible = "zmk,keymap";
 
         default_layer {
-// ----------------------------------------              ---------------------------------------
-// | BT/TAB |  Q  |  W  |  E  |  R  |  T  |              |  Y  |  U  |  I  |  O  |  P  |  ESC  |
-// | SHIFT  |  A  |  S  |  D  |  F  |  G  |              |  H  |  J  |  K  |  L  |  Ç  | SHIFT |
-// |  CTRL  |  Z  |  X  |  C  |  V  |  B  |              |  N  |  M  |  ,  |  .  | ;/: |  /?   |
-//             | BKSP | SPACE | WIN | NRS |              | SPC | ENTER | SPACE | RALT |
-//             ----------------------------              ------------------------------
+            // ----------------------------------------              ---------------------------------------
+            // | BT/TAB |  Q  |  W  |  E  |  R  |  T  |              |  Y   |  U  |  I  |  O  |  P  |  ESC  |
+            // | SHIFT  |  A  |  S  |  D  |  F  |  G  |              |  H   |  J  |  K  |  L  |  Ç  | SHIFT |
+            // |  CTRL  |  Z  |  X  |  C  |  V  |  B  |              |  N   |  M  |  ,  |  .  | ;/: |  /?   |
+            //             | BKSP | SPACE | WIN | NRS |              | LALT | SPECIAL | SPACE | ENTER |
+            //             ----------------------------              ------------------------------
             bindings = <
-    &lt BT TAB  &kp Q    &kp W     &kp E      &kp R     &kp T                   &kp Y         &kp U    &kp I      &kp O     &kp P      &kp ESC
-    &kp LSHIFT  &kp A    &kp S     &kp D      &kp F     &kp G                   &kp H         &kp J    &kp K      &kp L     &kp SEMI   &kp RSHIFT
-    &kp LCTRL   &kp Z    &kp X     &kp C      &kp V     &kp B                   &kp N         &kp M    &kp COMMA  &kp DOT   &kp SLASH  &kp INT1
-                         &kp BSPC  &kp SPACE  &kp LGUI  &tog NUMBERS            &tog SPECIAL  &kp RET  &kp SPACE  &kp LALT
+                &lt BT TAB  &kp Q    &kp W     &kp E      &kp R         &kp T                   &kp Y     &kp U         &kp I      &kp O     &kp P           &kp ESC
+                &kp LSHIFT  &kp A    &kp S     &kp D      &kp F         &kp G                   &kp H     &kp J         &kp K      &kp L     &kp CEDILHA     &kp RSHIFT
+                &kp LCTRL   &kp Z    &kp X     &kp C      &kp V         &kp B                   &kp N     &kp M         &kp COMMA  &kp DOT   &kp COLON_SEMI  &kp BSLH_QST
+                                     &kp BSPC  &kp SPACE  &tog NUMBERS  &kp LGUI                &kp LALT  &tog SPECIAL  &kp SPACE  &kp RET
             >;
         };
 
-// ---------------------------------------              ----------------------------------------------
-// | trans |  0  |  7  |  8  |  9  |  .  |              |  F1  |  F2   |  F3   |  F4   |  F5  |  F6  |
-// | trans |  *  |  4  |  5  |  6  |  -  |              |  F7  |  F8   |  F9   |  F10  |  F11 | F12  |
-// | trans |  =  |  1  |  2  |  3  |  +  |              |      |       |       |       |      |      |
-//         | trans | trans | trans | DFT |              | DFT  | trans | trans | trans |
-//         -------------------------------              --------------------------------
+// -------------------------------------------------              -----------------------------------------------
+// | trans |   F1  |   F2  |   F3  |   F4  |   F5  |              |   F6  |   F7  |   F8  |   F9  | F10 | trans |
+// | trans |   0   |   1   |   2   |   3   |   4   |              |   5   |   6   |   7   |   8   |  9  | trans |
+// | trans |       |   ,   |   .   |   /   |   *   |              |   -   |   +   |   =   |       |     |       |
+//                 | trans | trans | trans | trans |              | trans | trans | trans | trans |
+//                 ---------------------------------              --------------------------------
         number_layer {
             bindings = <
-    &trans  &kp N0     &kp N7  &kp N8  &kp N9  &kp DOT                        &kp F1        &kp F2  &kp F3  &kp F4   &kp F5   &kp F6
-    &trans  &kp STAR   &kp N4  &kp N5  &kp N6  &kp MINUS                      &kp F7        &kp F8  &kp F9  &kp F10  &kp F11  &kp F12
-    &trans  &kp EQUAL  &kp N1  &kp N2  &kp N3  &kp PLUS                       &none         &none   &none   &none    &none    &none
-                       &trans  &trans  &trans  &tog NUMBERS                   &tog SPECIAL  &trans  &trans  &trans
+    &trans  &kp F1  &kp F2     &kp F3   &kp F4        &kp F5                         &kp F6     &kp F7    &kp F8     &kp F9  &kp F10  &trans
+    &trans  &kp N0  &kp N1     &kp N2   &kp N3        &kp N4                         &kp N5     &kp N6    &kp N7     &kp N8  &kp N9   &trans
+    &trans  &none   &kp COMMA  &kp DOT  &kp BSLH_QST  &kp STAR                       &kp MINUS  &kp PLUS  &kp EQUAL  &none   &none    &none
+                    &trans     &trans   &trans        &trans                         &trans     &trans    &trans     &trans
             >;
         };
 
-// ---------------------------------------              -------------------------------------------
-// | trans | '/" |  !  |  @  |  #  |  $  |              |  &  |   *   |   (   |   )   | -/_ | =/+ |
-// | trans |  "  |     |     |     |  %  |              |     |       |  [/{  |  ]/}  |     | '/` |
-// | trans | \/| |     |     |     |     |              |     |       |   {   |   }   |     |  ~  |
-//         | trans | trans | trans | DFT |              | DFT | trans | trans | trans |
+// ---------------------------------------              ---------------------------------------
+// | trans | '/" |  !  |  @  |  #  |  $  |              |  *  |  (  |  )  | -/_ | =/+ | trans |
+// | trans |  "  |     |     |     |  %  |              |  &  |     | [/{ | ]/} |  ~  | trans |
+// | trans | \/| |     |     |     |     |              |     |     |  {  |  }  | '/` | trans |
+//       | trans | trans | trans | trans |              | trans | trans | trans | trans |
 //         -------------------------------              -------------------------------
         special_layer {
             bindings = <
-    &trans  &kp GRAVE      &kp EXCL  &kp AT  &kp HASH  &kp DLLR                      &kp AMPS      &kp STAR  &kp LPAR          &kp RPAR          &kp MINUS  &kp EQUAL
-    &trans  &kp LS(GRAVE)  &none     &none   &none     &kp PRCNT                     &none         &none     &kp NEW_LBKT      &kp NEW_RBKT      &none      &kp NEW_GRAVE
-    &trans  &kp NUBS       &none     &none   &none     &none                         &none         &none     &kp LS(NEW_LBKT)  &kp LS(NEW_RBKT)  &none      &kp NEW_TILDE
-                           &trans    &trans  &trans    &tog NUMBERS                  &tog SPECIAL  &trans    &trans            &trans
+    &trans  &kp GRAVE      &kp EXCL  &kp AT  &kp HASH  &kp DLLR                      &kp STAR  &kp LPAR          &kp RPAR          &kp MINUS  &kp EQUAL      &trans
+    &trans  &kp LS(GRAVE)  &none     &none   &none     &kp PRCNT                     &kp AMPS  &kp NEW_LBKT      &kp NEW_RBKT      &none      &kp NEW_GRAVE  &trans
+    &trans  &kp NUBS       &none     &none   &none     &none                         &none     &kp LS(NEW_LBKT)  &kp LS(NEW_RBKT)  &none      &kp NEW_TILDE  &trans
+                           &trans    &trans  &trans    &trans                        &trans    &trans            &trans            &trans
             >;
         };
 
 // --------------------------------------------------              -------------------------------------------------------
-// | trans | BT_CLR |       |   UP  |       | BOOT  |              | BOOT  | SOUND_DOWN |   UP  | SOUND_UP | MUTE | trans |
+// | trans | BT_CLR |       |   UP  | PRINT | BOOT  |              | BOOT  | SOUND_DOWN |   UP  | SOUND_UP | MUTE | trans |
 // | trans |        |  LEFT |  DOWN | RIGHT |       |              |       |    LEFT    |  DOWN |   RIGHT  |      | trans |
 // | trans | BTS_0  | BTS_1 | BTS_2 | BTS_3 | BTS_4 |              |       |            |       |          |      |       |
 //                  | trans | trans | trans | trans |              | trans |    trans   | trans |   trans  |
 //                  ---------------------------------              -----------------------------------------
         bt_layer {
             bindings = <
-    &trans        &none         &none         &kp UP        &none         &bootloader           &bootloader  &kp SOUND_DOWN  &kp UP    &kp SOUND_UP  &kp MUTE  &trans
+    &trans        &none         &none         &kp UP        &kp PSCRN      &bootloader          &bootloader  &kp SOUND_DOWN  &kp UP    &kp SOUND_UP  &kp MUTE  &trans
     &trans        &none         &kp LEFT      &kp DOWN      &kp RIGHT     &none                 &none        &kp LEFT        &kp DOWN  &kp RIGHT     &none     &trans
     &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR            &none        &none           &none     &none         &none     &none
                                 &trans        &trans        &trans        &trans                &trans       &trans          &trans    &trans
