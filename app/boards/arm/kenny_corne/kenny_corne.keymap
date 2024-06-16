@@ -57,31 +57,31 @@
 
 // ---------------------------------------              ---------------------------------------
 // | trans | '/" |  !  |  @  |  #  |  $  |              |  *  |  (  |  )  | -/_ | =/+ | trans |
-// | trans |  "  |     |     |     |  %  |              |  &  |     | [/{ | ]/} |  ~  | trans |
-// | trans | \/| |     |     |     |     |              |     |     |  {  |  }  | '/` | trans |
+// | trans |  "  | \/| |     |  |  |  %  |              |  &  | [/{ | ]/} | ~/^ | ´/` | trans |
+// | trans |     |     |     |     |     |              |     |  {  |  }  |     |     | trans |
 //       | trans | trans | trans | trans |              | trans | trans | trans | trans |
 //         -------------------------------              -------------------------------
         special_layer {
             bindings = <
-    &trans  &kp GRAVE      &kp EXCL  &kp AT  &kp HASH      &kp DLLR                      &kp STAR  &kp LPAR          &kp RPAR          &kp MINUS  &kp EQUAL      &trans
-    &trans  &kp LS(GRAVE)  &none     &none   &none         &kp PRCNT                     &kp AMPS  &kp NEW_LBKT      &kp NEW_RBKT      &none      &kp NEW_GRAVE  &trans
-    &trans  &kp NUBS       &none     &none   &none         &none                         &none     &kp LS(NEW_LBKT)  &kp LS(NEW_RBKT)  &none      &kp NEW_TILDE  &trans
-                           &trans    &trans  &tog SPECIAL  &trans                        &trans    &trans            &trans            &trans
+    &trans  &kp GRAVE      &kp EXCL  &kp AT  &kp HASH      &kp DLLR              &kp STAR  &kp LPAR          &kp RPAR          &kp MINUS     &kp EQUAL      &trans
+    &trans  &kp LS(GRAVE)  &kp NUBS  &none   &kp LS(NUBS)  &kp PRCNT             &kp AMPS  &kp NEW_LBKT      &kp NEW_RBKT      &kp NEW_TILDE &kp NEW_GRAVE  &trans
+    &trans  &none          &none     &none   &none         &none                 &none     &kp LS(NEW_LBKT)  &kp LS(NEW_RBKT)  &none         &none          &trans
+                           &trans    &trans  &tog SPECIAL  &trans                &trans    &trans            &trans            &trans
             >;
         };
 
 // --------------------------------------------------              -------------------------------------------------------
 // | trans | BT_CLR |       |   UP  | PRINT | BOOT  |              | BOOT  | SOUND_DOWN |   UP  | SOUND_UP | MUTE | trans |
-// | trans |        |  LEFT |  DOWN | RIGHT |       |              |       |    LEFT    |  DOWN |   RIGHT  |      | trans |
+// | trans |        |  LEFT |  DOWN | RIGHT | RESET |              | RESET |    LEFT    |  DOWN |   RIGHT  |      | trans |
 // | trans | BTS_0  | BTS_1 | BTS_2 | BTS_3 | BTS_4 |              |       |            |       |          |      |       |
 //                  | trans | trans | trans | trans |              | trans |    trans   | trans |   trans  |
 //                  ---------------------------------              -----------------------------------------
         bt_layer {
             bindings = <
-    &trans        &none         &none         &kp UP        &kp PSCRN      &bootloader          &bootloader  &kp SOUND_DOWN  &kp UP    &kp SOUND_UP  &kp MUTE  &trans
-    &trans        &none         &kp LEFT      &kp DOWN      &kp RIGHT     &none                 &none        &kp LEFT        &kp DOWN  &kp RIGHT     &none     &trans
-    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR            &none        &none           &none     &none         &none     &none
-                                &trans        &trans        &trans        &trans                &trans       &trans          &trans    &trans
+    &trans  &bt BT_CLR    &none         &kp UP        &kp PSCRN     &bootloader          &bootloader  &kp SOUND_DOWN  &kp UP    &kp SOUND_UP  &kp MUTE  &trans
+    &trans  &none         &kp LEFT      &kp DOWN      &kp RIGHT     &sys_reset           &sys_reset   &kp LEFT        &kp DOWN  &kp RIGHT     &none     &trans
+    &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4         &none        &none           &none     &none         &none     &none
+                          &trans        &trans        &trans        &trans               &trans       &trans          &trans    &trans
             >;
         };
 
