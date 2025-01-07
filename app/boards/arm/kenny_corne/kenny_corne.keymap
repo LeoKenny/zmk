@@ -44,28 +44,28 @@
         // | trans |   F1  |   F2  |   F3  |   F4  |   F5  |              |   F6  |   F7  |   F8  |   F9  | F10 | trans |
         // | trans |   0   |   1   |   2   |   3   |   4   |              |   5   |   6   |   7   |   8   |  9  | trans |
         // | trans |       |   ,   |   .   |   /   |   *   |              |   -   |   +   |   =   |       |     |       |
-        //                 | trans | trans |       | trans |              | trans |       | trans | trans |
+        //                 | trans | trans |       | trans |              | trans |  BSPC | trans | trans |
         //                 ---------------------------------              --------------------------------
         number_layer {
             bindings = <
     &trans  &kp F1  &kp F2     &kp F3   &kp F4        &kp F5                         &kp F6     &kp F7        &kp F8     &kp F9  &kp F10  &trans
     &trans  &kp N0  &kp N1     &kp N2   &kp N3        &kp N4                         &kp N5     &kp N6        &kp N7     &kp N8  &kp N9   &trans
     &trans  &none   &kp COMMA  &kp DOT  &kp BSLH_QST  &kp STAR                       &kp MINUS  &kp PLUS      &kp EQUAL  &none   &none    &none
-                    &trans     &trans   &none         &trans                         &trans     &none         &trans     &trans >;
+                    &trans     &trans   &none         &trans                         &trans     &kp BSPC      &trans     &trans >;
         };
 
-        // ---------------------------------------------              ---------------------------------------------
-        // | trans | '/" |   !   |   @   |  #  |   $   |              |   *   |  (  |   )   |  -/_  | =/+ | trans |
-        // | trans |  "  |  \/|  |       |  |  |   %   |              |   &   | [/{ |  ]/}  |  ~/^  | ´/` | trans |
-        // | trans |     |       |       |     |       |              |       |  {  |   }   |       |     | trans |
-        //               | trans | trans |     | trans |              | trans |     | trans | trans |
-        //                ------------------------------              -------------------------------
+        // -----------------------------------------------              ---------------------------------------------
+        // | trans | '/" |   !   |   @   |   #   |   $   |              |   *   |  (  |   )   |  -/_  | =/+ | trans |
+        // | trans |  "  |  \/|  |       |   |   |   %   |              |   &   | [/{ |  ]/}  |  ~/^  | ´/` | trans |
+        // | trans |     |       |       |       |       |              |       |  {  |   }   |       |     | trans |
+        //               | trans | trans | ENTER | trans |              | trans |     | trans | trans |
+        //                --------------------------------              -------------------------------
         special_layer {
             bindings = <
     &trans  &kp GRAVE      &kp EXCL  &kp AT  &kp HASH      &kp DLLR              &kp STAR  &kp LPAR          &kp RPAR          &kp MINUS     &kp EQUAL      &trans
     &trans  &kp LS(GRAVE)  &kp NUBS  &none   &kp LS(NUBS)  &kp PRCNT             &kp AMPS  &kp NEW_LBKT      &kp NEW_RBKT      &kp NEW_TILDE &kp NEW_GRAVE  &trans
     &trans  &none          &none     &none   &none         &none                 &none     &kp LS(NEW_LBKT)  &kp LS(NEW_RBKT)  &none         &none          &trans
-                           &trans    &trans  &none         &trans                &trans    &none             &trans            &trans
+                           &trans    &trans  &kp RET       &trans                &trans    &none             &trans            &trans
             >;
         };
 
